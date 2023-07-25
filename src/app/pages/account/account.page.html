@@ -1,0 +1,119 @@
+<!--
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+-->
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="util.openMenu()">
+        <ion-icon slot="end" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main_div" *ngIf="loggedIn() == true">
+    <ion-row>
+      <ion-col size="4">
+        <div class="user_img" [ngStyle]="{'background-image':'url('+getProfile()+'),url(assets/bg.png)'}">
+        </div>
+      </ion-col>
+      <ion-col size="8">
+        <p class="username">{{getName()}}</p>
+        <p class="email">{{getEmail()}}</p>
+        <ion-button (click)="editProfile()" shape="round" size="small" color="light"> {{util.translate('Edit Profile')}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="options">
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="login()" *ngIf="loggedIn() == false">
+      <ion-icon name="document-lock-outline" slot="start"></ion-icon>
+      <ion-label>{{util.translate('Sign In / Sign Up')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="orders()" *ngIf="loggedIn() == true">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>{{util.translate('Orders')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToFav()" *ngIf="loggedIn() == true">
+      <ion-icon name="heart-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Favourite')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToAddress()" *ngIf="loggedIn() == true">
+      <ion-icon name="location-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Address')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToWallet()" *ngIf="loggedIn() == true">
+      <ion-icon name="wallet-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Wallet')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToRefer()" *ngIf="loggedIn() == true">
+      <ion-icon name="gift-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Refer & Earn')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="reset()" *ngIf="loggedIn() == true">
+      <ion-icon name="key-outline" slot="start"></ion-icon>
+      <ion-label>{{util.translate('Change Password')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToAbout()">
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('About Us')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToContact()">
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Contact Us')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goLangs()">
+      <ion-icon name="language-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Languages')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goToChats()" *ngIf="loggedIn() == true">
+      <ion-icon name="chatbubbles-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Chats')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goFaqs()">
+      <ion-icon name="flag-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('FAQs')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="goHelp()">
+      <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Help')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-activatable ripple-parent" (click)="logout()" *ngIf="loggedIn() == true">
+      <ion-icon name="power-outline" slot="start"></ion-icon>
+      <ion-label> {{util.translate('Log Out')}} </ion-label>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-item>
+  </div>
+</ion-content>

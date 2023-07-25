@@ -1,0 +1,115 @@
+<!--
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+-->
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="primary">
+    <ion-title> {{util.translate('Billing Information')}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="start" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="desc_div">
+    <div *ngIf="orders?.length" class="border_bottom">
+      <div *ngFor="let item of orders">
+        <p class="storeName">
+          <span class="name"> {{getStoreName(item.id)}} </span>
+          <span class="status"> {{getOrderStatus(item.id)}} </span>
+        </p>
+        <p *ngFor="let order of item.order;let ol = index" class="items">
+
+          <span *ngIf="order.size == 0 ">{{order.name}} -
+            <span *ngIf="order.have_gram == 1"> {{order.gram}} {{util.translate('grams')}} </span>
+            <span *ngIf="order.have_kg == 1"> {{order.kg}} {{util.translate('kg')}} </span>
+            <span *ngIf="order.have_liter ==1"> {{order.liter}} {{util.translate('ltr')}} </span>
+            <span *ngIf="order.have_ml ==1"> {{order.ml}} {{util.translate('ml')}} </span>
+            <span *ngIf="order.have_pcs == 1"> {{order.pcs}} {{util.translate('pcs')}} </span>
+            <span *ngIf="util.cside =='left'">
+              {{util.currecny}} {{order.discount ==0 ? order.original_price : order.sell_price}}
+            </span>
+            <span *ngIf="util.cside =='right'">
+              {{order.discount ==0 ? order.original_price : order.sell_price}} {{util.currecny}}
+            </span>
+          </span>
+          <span *ngIf="order.size == 1">
+            {{order.name}} - <span> {{order.variations[0].items[order.variant].title}} </span>
+            <span *ngIf="util.cside =='left'">
+              {{util.currecny}} {{order.discount ==0 ? order.original_price : order.sell_price}}
+            </span>
+            <span *ngIf="util.cside =='right'">
+              {{order.discount ==0 ? order.original_price : order.sell_price}} {{util.currecny}}
+            </span>
+          </span>
+          <span>X {{order.quantiy}}</span>
+        </p>
+        <p class="items-billing">
+          <span> {{util.translate('Order Item Total')}} </span>
+          <span *ngIf="util.cside =='left'">
+            {{util.currecny}} {{item.orderItemTotal}}
+          </span>
+          <span *ngIf="util.cside =='right'">
+            {{item.orderItemTotal}} {{util.currecny}}
+          </span>
+        </p>
+        <p class="items-billing">
+          <span> {{util.translate('Order Delivery Charge')}} </span>
+          <span *ngIf="util.cside =='left'">
+            {{util.currecny}} {{item.shippingPrice}}
+          </span>
+          <span *ngIf="util.cside =='right'">
+            {{item.shippingPrice}} {{util.currecny}}
+          </span>
+        </p>
+        <p class="items-billing">
+          <span *ngIf="orders.length > 1"> {{util.translate('Split Order Tax')}} </span>
+          <span *ngIf="orders.length == 1"> {{util.translate('Order Tax')}} </span>
+          <span *ngIf="util.cside =='left'">
+            {{util.currecny}} {{item.orderTaxAmount}}
+          </span>
+          <span *ngIf="util.cside =='right'">
+            {{item.orderTaxAmount}} {{util.currecny}}
+          </span>
+        </p>
+        <p class="items-billing">
+          <span *ngIf="orders.length > 1"> {{util.translate('Split Order Discount')}} </span>
+          <span *ngIf="orders.length == 1"> {{util.translate('Order Discount')}} </span>
+          <span *ngIf="util.cside =='left'">
+            - {{util.currecny}} {{item.orderDiscount}}
+          </span>
+          <span *ngIf="util.cside =='right'">
+            - {{item.orderDiscount}} {{util.currecny}}
+          </span>
+        </p>
+        <p class="items-billing">
+          <span *ngIf="orders.length > 1"> {{util.translate('Split Order Wallet Discount')}} </span>
+          <span *ngIf="orders.length == 1"> {{util.translate('Order Wallet Discount')}} </span>
+          <span *ngIf="util.cside =='left'">
+            - {{util.currecny}} {{item.orderWalletDiscount}}
+          </span>
+          <span *ngIf="util.cside =='right'">
+            - {{item.orderWalletDiscount}} {{util.currecny}}
+          </span>
+        </p>
+        <p class="items-billing">
+          <span style="text-transform: uppercase;color: red;">{{util.translate('Amount to Pay at')}}
+            {{getStoreName(item.id)}}</span>
+          <span *ngIf="util.cside =='left'" style="text-transform: uppercase;color: red;">
+            {{util.currecny}} {{getTotalBilling(item)}}
+          </span>
+          <span *ngIf="util.cside =='right'" style="text-transform: uppercase;color: red;">
+            {{getTotalBilling(item)}} {{util.currecny}}
+          </span>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

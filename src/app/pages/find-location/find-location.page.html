@@ -1,0 +1,64 @@
+<!--
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+-->
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar class="ion-no-border">
+    <ion-title *ngIf="util.findType == 0 || util.findType =='0'">{{util.translate('Select Your City')}} </ion-title>
+    <ion-title *ngIf="util.findType == 1 || util.findType =='1'">{{util.translate('Choose Your Location')}} </ion-title>
+    <ion-title *ngIf="util.findType == 2 || util.findType =='2'">{{util.translate('Enter Your Zipcode')}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="util.findType == 0 || util.findType =='0'">
+    <ion-list *ngIf="util.servingCities?.length">
+      <ion-radio-group [(ngModel)]="cityId">
+        <ion-list-header>
+          <ion-label>{{util.translate('Choose your city')}} </ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of util.servingCities">
+          <ion-label>{{item.name}}</ion-label>
+          <ion-radio [value]="item.id"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+
+  <div class="location_div" *ngIf="util.findType == 1 || util.findType =='1'">
+
+    <div class="bg_image map_image" [style.backgroundImage]="'url(assets/imgs/map.png)'"></div>
+
+    <ion-label>{{util.translate('Set your location to start exploring grocery stores around you')}} </ion-label>
+
+    <ion-button expand="block" class="block_btn" mode="ios" (click)="getLocationInfo()">
+      {{util.translate('Enable Location')}}
+    </ion-button>
+
+    <ion-spinner *ngIf="isLoading == true" name="crescent"></ion-spinner>
+
+  </div>
+
+  <div class="content" *ngIf="util.findType == 2 || util.findType =='2'">
+    <ion-label class="head">{{util.translate('Enter your Zipcode')}} </ion-label>
+    <ion-label class="sub_head">{{util.translate('We will find stores from your zipcode.')}} </ion-label>
+    <ion-item lines="none" class="zipcode">
+      <ion-input [placeholder]="util.translate('zipcode')" [(ngModel)]="zipCode"></ion-input>
+    </ion-item>
+    <ion-button (click)="onZipSave()" expand="block" shape="round" class="refresh_btn">
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      {{util.translate('Proceed')}}
+    </ion-button>
+  </div>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="util.findType == 0 || util.findType =='0'">
+    <ion-fab-button (click)="selectCity()">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

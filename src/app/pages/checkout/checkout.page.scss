@@ -1,0 +1,296 @@
+/*
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+*/
+.topHeader {
+  .header {
+    padding: 0px 30px 0px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    height: 20px;
+
+    .filled {
+      color: var(--ion-color-primary);
+    }
+
+    .fiilled-bg {
+      border-bottom: 2px solid var(--ion-color-primary);
+    }
+
+    ion-icon {
+      font-size: 50px;
+      margin: 10px;
+      color: lightgray;
+    }
+
+    span {
+      height: 2px;
+      width: 100%;
+      border-bottom: 2px solid lightgray;
+    }
+  }
+
+  .text {
+    padding: 0px 30px 0px 30px;
+    position: relative;
+
+    .first {
+      position: absolute;
+      left: 10px;
+      font-size: 10px;
+      font-family: "bold";
+    }
+
+    .second {
+      position: absolute;
+      left: 50%;
+      top: 7px;
+      transform: translate(-50%, -50%);
+      font-size: 10px;
+      font-family: "bold";
+    }
+
+    .third {
+      position: absolute;
+      right: 35px;
+      font-size: 10px;
+      font-family: "bold";
+    }
+  }
+}
+
+.delivery_options {
+  width: 100%;
+
+  ion-thumbnail {
+    --size: 25px;
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+  }
+
+  .header {
+    font-size: 16px;
+    font-family: "bold";
+    background: #f3f3f3;
+    margin: 0px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .stores {
+    border-bottom: 1px solid lightgray;
+    padding: 0px 20px;
+    margin-top: 20px;
+  }
+
+  .name {
+    font-size: 14px;
+    font-family: "bold";
+    margin: 0px;
+  }
+
+  .address {
+    font-size: 12px;
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+}
+
+.delivery_address {
+  padding: 5px 10px;
+  width: 100%;
+
+  .savedTitle {
+    font-family: "bold";
+  }
+
+  .noData {
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 250px;
+  }
+
+  .list {
+    margin-top: 20px;
+    position: relative;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-item {
+      flex: 0 0 auto;
+    }
+
+    .title {
+      font-family: "bold";
+      color: black;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      text-transform: capitalize;
+    }
+
+    .name {
+      color: lightgray;
+      font-size: 0.7rem;
+    }
+
+    .moreIcon {
+      position: absolute;
+      right: 0px;
+      top: 1px;
+    }
+  }
+}
+
+.payment_info {
+  width: 100%;
+
+  .coupones {
+    display: flex;
+    padding: 20px 10px;
+    background: #f3f3f3;
+    margin-top: 10px;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+
+    .badge {
+      width: 25px;
+      height: 25px;
+    }
+
+    .title {
+      padding: 0px 10px;
+      color: var(--ion-color-primary);
+    }
+
+    .end_btn {
+      position: absolute;
+      right: 0px;
+    }
+  }
+
+  .billing {
+    padding: 5px 10px;
+
+    .singleRow {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0px;
+      border-bottom: 1px dashed lightgray;
+
+      .headerTitle {
+        font-size: 0.8rem;
+      }
+
+      .boldClass {
+        font-family: "bold";
+      }
+
+      .headerTotal {
+        font-size: 1rem;
+      }
+
+      .priceTotal {
+        font-size: 1rem;
+      }
+
+      .price {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .header {
+    background: #f3f3f3;
+    padding: 20px;
+    margin-top: 20px;
+
+    .title {
+      font-size: 1rem;
+      font-family: "bold";
+    }
+  }
+
+  .white_16 {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: white;
+  }
+
+  .radio_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--ion-color-grey);
+
+    .inner_flex {
+      display: flex;
+      align-items: center;
+
+      ion-icon {
+        font-size: 24px;
+        color: var(--ion-color-grey);
+      }
+
+      ion-label {
+        margin-left: 10px;
+        font-family: "medium";
+      }
+    }
+  }
+}
+
+.btm {
+  width: 100%;
+
+  .bottomText {
+    font-size: 10px;
+    color: gray;
+    padding: 0px 20px;
+
+    .bolder {
+      font-size: 12px;
+      font-family: "bold";
+      color: black;
+    }
+  }
+
+  .btmbar {
+    height: 50px;
+    width: 100%;
+    background: var(--ion-color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 16px;
+    border-radius: 10px;
+
+    ion-label {
+      color: white;
+      font-family: "bold";
+      display: flex;
+
+      ion-icon {
+        padding-left: 5px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.footer_div {
+  background-color: var(--ion-color-light);
+}

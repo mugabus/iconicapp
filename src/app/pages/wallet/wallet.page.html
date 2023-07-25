@@ -1,0 +1,75 @@
+<!--
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+-->
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="util.onBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{util.translate('Your Wallet')}} </ion-title>
+  </ion-toolbar>
+  <div class="wallet-amount ion-padding">
+    <ion-label class="wallet-data"> $ {{balance}} </ion-label>
+    <ion-segment value="all" mode="md">
+      <ion-segment-button value="all">
+        <ion-label>{{util.translate('All Transactions')}} <ion-badge color="primary" mode="ios" *ngIf="list?.length">
+            {{list.length}}
+          </ion-badge>
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="flex_div" *ngFor="let item of dummy">
+    <div>
+      <ion-label>
+        <h2>
+          <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+        </h2>
+        <p>
+          <ion-skeleton-text animated style="width: 300px"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </div>
+
+    <div>
+      <ion-label>
+        <h2>
+          <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
+        </h2>
+        <p>
+          <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </div>
+  </div>
+  <div class="flex_div" *ngFor="let item of list">
+    <div>
+      <ion-label>
+        <h2 class="head">{{item.type}} </h2>
+        <p class="sub"> {{item.uuid}}</p>
+      </ion-label>
+    </div>
+    <div>
+      <ion-label style="text-align: right;">
+        <h2 class="head">
+          <span *ngIf="util.cside =='left'"> {{util.currecny}}
+            {{item.amount}} </span>
+          <span *ngIf="util.cside =='right'">
+            {{item.amount}}
+            {{util.currecny}}</span>
+        </h2>
+        <p class="sub">{{item.created_at}} </p>
+      </ion-label>
+    </div>
+
+  </div>
+</ion-content>

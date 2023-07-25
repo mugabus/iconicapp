@@ -1,0 +1,49 @@
+<!--
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+-->
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="primary">
+    <ion-title> {{name}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close('fail')">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main_content_div">
+
+    <div class="main_div">
+
+      <div class="info_div">
+        <div class="rattingBtns">
+          <ion-icon slot="start" [name]="rate >= 1 ? 'star' :'star-outline'" [color]="rate >= 1 ? 'warning' :'medium'"
+            (click)="onRatingChange(1)"></ion-icon>
+          <ion-icon slot="start" [name]="rate >= 2 ? 'star' :'star-outline'" [color]="rate >= 1 ? 'warning' :'medium'"
+            (click)="onRatingChange(2)"></ion-icon>
+          <ion-icon slot="start" [name]="rate >= 3 ? 'star' :'star-outline'" [color]="rate >= 1 ? 'warning' :'medium'"
+            (click)="onRatingChange(3)"></ion-icon>
+          <ion-icon slot="start" [name]="rate >= 4 ? 'star' :'star-outline'" [color]="rate >= 1 ? 'warning' :'medium'"
+            (click)="onRatingChange(4)"></ion-icon>
+          <ion-icon slot="start" [name]="rate >= 5 ? 'star' :'star-outline'" [color]="rate >= 1 ? 'warning' :'medium'"
+            (click)="onRatingChange(5)"></ion-icon>
+        </div>
+        <div class="name">
+          <div class="content_div">
+            <ion-textarea row="8" type="text" [placeholder]="util.translate('Comment')" [(ngModel)]="comment">
+            </ion-textarea>
+          </div>
+        </div>
+        <ion-button (click)="submit()" expand="block" fill="clear" shape="round">
+          {{util.translate('Submit')}}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

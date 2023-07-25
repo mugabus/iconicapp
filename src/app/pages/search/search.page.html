@@ -1,0 +1,30 @@
+<!--
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+-->
+<ion-header class="ion-no-border" mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-searchbar [placeholder]="util.translate('Search products')" inputmode="text" type="search"
+      style="padding: 0px 12px !important;" (ionInput)="onSearchChange($event)" #inputId [debounce]="250" mode="ios"
+      showCancelButton="never">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of searchDataResults" detail="" (click)="goToSingleProduct(item)">
+    <ion-thumbnail slot="start">
+      <img [src]="api.mediaURL + item.cover" />
+    </ion-thumbnail>
+    <ion-label>{{item.name}}</ion-label>
+  </ion-item>
+</ion-content>

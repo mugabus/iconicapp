@@ -1,0 +1,106 @@
+/*
+  Authors : initappz (Rahul Jograna)
+  Website : https://initappz.com/
+  App Name : Grocery Delivery App Source code is licensed as per the
+  terms found in the Website https://initappz.com/license
+  Copyright and Good Faith Purchasers © 2023-present initappz.
+*/
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main_content_div {
+  width: 100%;
+
+  .gradient_div {
+    padding: 20px;
+    //   background: var(--ion-color-primary);
+    // height: 70vh;
+
+    .head_div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .back_img {
+        width: 20px;
+        position: absolute;
+        left: 20px;
+      }
+
+      .head_lbl {
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+
+    .gift_box {
+      height: 150px;
+      width: 150px;
+      display: block;
+      margin: auto;
+      margin-top: 100px;
+    }
+
+    ion-label {
+      display: block;
+      text-align: center;
+    }
+
+    .bold_lbl {
+      font-family: 'bold';
+      font-size: 26px;
+    }
+  }
+
+  .nodata {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    .no_data {
+      width: 250px;
+    }
+
+    .nodata_txt {
+      text-align: center;
+      font-size: 12px;
+      font-family: 'bold';
+    }
+  }
+
+  .simple_div {
+    padding: 20px;
+
+    .head_lbl {
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    ion-input {
+      margin-top: 20px;
+      border-bottom: 1px solid black;
+      font-weight: 500;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .up_icn {
+      position: absolute;
+      right: 0;
+      font-size: 25px;
+      color: var(--ion-color-primary);
+    }
+
+    ion-button {
+      --background: var(--ion-color-primary);
+      --border-radius: 5px;
+      margin-top: 20px;
+    }
+  }
+}
